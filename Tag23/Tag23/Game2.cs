@@ -7,6 +7,10 @@ namespace Tag23
 {
     class Game2 : Game
     {
+        public Game2(params int[] field) : base(field)
+        {
+            Randomize();
+        }
         protected void Randomize()
         {
             int help = 0;

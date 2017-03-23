@@ -20,7 +20,14 @@ namespace Tag23
                 Console.Write("Введите число, стоящее рядом с нулем,чтобы поменять их местами: ");
                 int value = Convert.ToInt32(Console.ReadLine());
                 game.GetLocation(value);
-                game.Shift(value);
+                game.Shift(value);                
+
+                Console.Write("Если хотите отменить ход, нажмите 'S' ");
+                
+                if (Console.ReadLine() == "S")
+                {
+                    game.Rollback();
+                }
                 Console.Clear();
             }
             Console.ReadLine();

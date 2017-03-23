@@ -20,14 +20,17 @@ namespace Tag23
             CreateFieldOfGame();
             //GenerationField();
         }
-
+        
         // Индексатор
         public int this[int i, int j]
         {
-            get { return gameField[i, j]; }
+            get
+            {
+                return gameField[i, j];
+            }
         }
 
-        protected void CreateFieldOfGame()
+        private void CreateFieldOfGame()
         {
             int sizeOfField = Convert.ToInt32(Math.Sqrt(field.Length));
             {
@@ -68,7 +71,7 @@ namespace Tag23
             return helpmas;
         }
 
-        public void Shift(int value)
+        public virtual void Shift(int value)
         {
             int[,] helpmas = new int[1, 1];
             int coordinateXZero = 0;
@@ -96,6 +99,10 @@ namespace Tag23
                 gameField[moveX, moveY] = gameField[coordinateXZero, coordinateYZero];
                 gameField[coordinateXZero, coordinateYZero] = helpmas[0, 0];
             }
+        }
+        public int[,] ReturnGameField()
+        {
+            return gameField;
         }
     }
 }

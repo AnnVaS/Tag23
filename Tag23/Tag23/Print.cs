@@ -10,6 +10,8 @@ namespace Tag23
     {
         public static void Prints(Game game)
         {
+            int[,] gameField = game.ReturnGameField();
+            Console.Clear();
             for (int i = 0; i < game.gameField.GetLength(0); i++)
             {
                 for (int j = 0; j < game.gameField.GetLength(1); j++)

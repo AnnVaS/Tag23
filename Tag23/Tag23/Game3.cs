@@ -7,30 +7,25 @@ namespace Tag23
 {
     class Game3 : Game2
     {
-        public readonly List<int[]> stepsPlayer;
+        public readonly List<int> stepsPlayer;
         public int[] help;
 
-        public Game3(params int[] values)
-        {
-            CreateFieldOfGame();
-            Randomize();
-            stepsPlayer = new List<int[]>();
+        public Game3(params int[] field) : base(field)
+        {       
+            stepsPlayer = new List<int>();
 
         }
         public override void Shift(int value)
         {
-            int[] coordinatesZero = GetLocation(0);
-            int[] massiveMoveValue = GetLocation(value);
-
-            stepsPlayer.Add(coordinatesZero);
-            stepsPlayer.Add(massiveMoveValue);
-
-            help = new[] { coordinatesZero[0], coordinatesZero[1], massiveMoveValue[0], massiveMoveValue[1] };
+            base.Shift(value);
+            stepsPlayer.Add(value);
         }
-
-        public int[] returnHelp()
+        public void Rollback()
         {
-            return help;
+            int lastStep = stepsPlayer.Last();
+            stepsPlayer.Remove(lastStep);
+            this.Shift(lastStep);
         }
+       
     }
 }
