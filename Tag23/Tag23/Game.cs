@@ -73,30 +73,16 @@ namespace Tag23
         public virtual void Shift(int value)
         {
             int[,] helpmas = new int[1, 1];
-            int coordinateXZero = 0;
-            int coordinateYZero = 0;
-            for (int i = 0; i < gameField.GetLength(0); i++)
+            int[] coordinateValue = GetLocation(value);
+            int[] coordinateZero = GetLocation(0);
+
+            if ((Math.Abs(coordinateValue[0] - coordinateZero[0]) == 1 && coordinateValue[1] == coordinateZero[1]) ||
+                ((Math.Abs(coordinateValue[1] - coordinateZero[1]) == 1 && coordinateValue[0] == coordinateZero[0])))
             {
-                for (int j = 0; j < gameField.GetLength(1); j++)
-                {
-                    if (gameField[i, j] == 0)
-                    {
-                        coordinateXZero = i;
-                        coordinateYZero = j;
-                    }
-                }
-            }
-            if (Math.Abs(moveX - coordinateXZero) == 1 && moveY == coordinateYZero)
-            {
-                helpmas[0, 0] = gameField[moveX, moveY];
-                gameField[moveX, moveY] = gameField[coordinateXZero, coordinateYZero];
-                gameField[coordinateXZero, coordinateYZero] = helpmas[0, 0];
-            }
-            if (Math.Abs(moveY - coordinateYZero) == 1 && moveX == coordinateXZero)
-            {
-                helpmas[0, 0] = gameField[moveX, moveY];
-                gameField[moveX, moveY] = gameField[coordinateXZero, coordinateYZero];
-                gameField[coordinateXZero, coordinateYZero] = helpmas[0, 0];
+                int temp = 0;
+                temp = gameField[coordinateValue[0], coordinateValue[1]];
+                gameField[coordinateValue[0], coordinateValue[1]] = gameField[coordinateZero[0], coordinateZero[1]];
+                gameField[coordinateZero[0], coordinateZero[1]] = temp;
             }
         }
         public int[,] ReturnGameField()
