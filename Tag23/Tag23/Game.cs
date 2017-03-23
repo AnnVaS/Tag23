@@ -17,8 +17,7 @@ namespace Tag23
         {
             this.field = field;
             gameField = new int[Convert.ToInt32(Math.Sqrt(field.Length)), Convert.ToInt32(Math.Sqrt(field.Length))];
-            CreateFieldOfGame();
-            //GenerationField();
+            CreateFieldOfGame();            
         }
         
         // Индексатор

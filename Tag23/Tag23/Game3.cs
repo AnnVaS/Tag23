@@ -7,8 +7,7 @@ namespace Tag23
 {
     class Game3 : Game2
     {
-        public readonly List<int> stepsPlayer;
-        public int[] help;
+        public readonly List<int> stepsPlayer;        
 
         public Game3(params int[] field) : base(field)
         {       
